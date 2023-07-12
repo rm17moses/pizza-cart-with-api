@@ -1,0 +1,7 @@
+[x-cloak] { display: none !important; }  
+
+.floating-button {
+    position: fixed;
+    z-index: 9999;
+}
+

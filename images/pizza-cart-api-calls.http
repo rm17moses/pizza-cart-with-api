@@ -1,0 +1,71 @@
+# Pizza API
+
+GET https://pizza-api.projectcodex.net/api/pizzas
+
+### Create a pizza cart
+GET https://pizza-api.projectcodex.net/api/pizza-cart/create?username=Moses
+
+
+### Get a Cart
+GET https://pizza-api.projectcodex.net/api/pizza-cart/6VWEyIMSNN/get	
+
+### Add pizza to cart
+POST https://pizza-api.projectcodex.net/api/pizza-cart/add
+content-type: application/json
+
+{
+	"cart_code" : "Nv9NIrtYs5",
+	"pizza_id" : 9
+
+}
+
+
+### Add pizza to cart
+POST https://pizza-api.projectcodex.net/api/pizza-cart/add
+Content-Type: application/json
+
+{
+	"cart_code" : "rzI5MJ4FoU",
+	"pizza_id" : 23
+
+} 
+
+### Remove pizza from cart
+POST https://pizza-api.projectcodex.net/api/pizza-cart/remove
+Content-Type: application/json
+
+{
+	"cart_code" : "fbHcGwUnjA",
+	"pizza_id" : 23
+
+}
+### Get all the carts for a given user
+
+GET https://pizza-api.projectcodex.net/api/pizza-cart/username/Moses
+
+### Get all the active carts for a user
+
+GET https://pizza-api.projectcodex.net/api/pizza-cart/username/Moses/active
+
+
+### Pay for a cart
+POST https://pizza-api.projectcodex.net/api/pizza-cart/pay
+Content-Type: application/json
+
+{
+	"cart_code" : "h4a5q0Bsac",
+	"amount" : 3000
+
+}
+
+### Set or unset a given pizza to be featured
+POST https://pizza-api.projectcodex.net/api/pizzas/featured?username=rm17moses
+Content-Type: application/json
+
+{
+  "username": "rm17moses",
+  "pizza_id": 23
+}
+
+### Get listed featured pizzas
+GET https://pizza-api.projectcodex.net/api/pizzas/featured?username=rm17moses
