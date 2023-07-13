@@ -30,12 +30,21 @@ document.addEventListener("alpine:init", () => {
                 }
             },
 
+            pizzaImage(pizza) {
+              return `images/${pizza.flavour}.png`  
+            },
+
+            pizzaImage2(featured) {
+                return `images/${featured.flavour}.png`  
+              },
+
             logout() {
                 if (confirm('Do you want to logout?')) {
                     this.username = '';
                     this.cartId = '';
                     localStorage['cartId'] = '';
                     localStorage['username'] = '';
+                    window.location.reload();
                 }
             },
 
