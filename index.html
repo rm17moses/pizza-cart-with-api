@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/page.png">
 
 </head>
 
-<body class="container bg-info bg-gradient text-dark p-3" x-data="pizzaCart">
+<body class="container bg-info bg-gradient text-dark p-3" x-data="pizzaCart" x-cloak>
     <div x-show="!cartId" x-cloak>
         <div style="--bs-bg-opacity: .7;"
             class="container border text-center bg-warning bg-gradient text-center card p-3 mb-3">
@@ -199,10 +200,10 @@
                     <tbody>
                         <template x-for="pizza in pizzas">
                             <tr class="table-success">
-                                <td>
-                                    <img x-bind:src="pizzaImage(pizza)" class="rounded " height="70" alt="">
+                                <td class="pt-3">
+                                    <img x-bind:src="pizzaImage(pizza)" class="rounded " height="100" alt="">
                                 </td>
-                                <td>
+                                <td class="pt-3">
                                     <div class="d-block fw-bold">
                                         <span x-text="pizza.size"></span>
                                     </div>
@@ -210,12 +211,12 @@
                                         <span x-text="pizza.flavour"></span>
                                     </div>
                                 </td>
-                                <td>
-                                    <span class="fw-bold text-white bg-danger rounded ps-1 pe-1 "
+                                <td class="pt-3">
+                                    <span class="fw-bold btn btn-outline-dark btn-sm "
                                         x-text="'R' + pizza.price"></span>
                                 </td>
-                                <td>
-                                    <button class="btn btn-sm btn-success fw-bold"
+                                <td class="pt-3">
+                                    <button class="btn btn-success fw-bold"
                                         x-on:click="addPizzaToCart(pizza.id)">
                                         Buy</button>
                                 </td>
@@ -228,36 +229,36 @@
             </div>
 
             <div x-cloak class="card p-4 mt-3 bg-dark bg-gradient text-emphasis-warning" id="previous"
-                style="--bs-bg-opacity: .75;">
-                <h3 class="text-center text-white"><i class="bi bi-clock-history"></i> Your Previous Orders</h3>
-                <div class="mb-3">
-                    <select class="form-select form-select-sm" id="cartCodeSelect" x-model="selectedCartCode"
-                        x-on:change="fetchOrderHistory" aria-label=".form-select-sm example">
-                        <option selected>-- Select Cart Code --</option>
-                        <template x-for="cart in cartCodes">
-                            <option :value="cart.cart_code" x-text="cart.cart_code"></option>
-                        </template>
-                    </select>
-                </div>
-                <div x-show="selectedCartCode.length > 0">
-                    <ul class="list-unstyled">
+    style="--bs-bg-opacity: .75;">
+    <h3 class="text-center text-white"><i class="bi bi-clock-history"></i> Your Previous Orders</h3>
+    <div class="mb-3">
+        <select class="form-select form-select-sm" id="cartCodeSelect" x-model="selectedCartCode"
+            x-on:change="fetchOrderHistory" aria-label=".form-select-sm example">
+            <option selected>-- Select Cart Code --</option>
+            <template x-for="cart in cartCodes">
+                <option :value="cart.cart_code" x-text="cart.cart_code"></option>
+            </template>
+        </select>
+    </div>
+    <div x-show="selectedCartCode.length > 0">
+        <ul class="list-unstyled">
 
-                        <template x-for="pizza in orderPizzas">
-                            <li class="text-white">
-                                <strong>Pizza:</strong> <span x-text="pizza.flavour"></span><br>
-                                <strong>Size:</strong> <span x-text="pizza.size"></span><br>
-                                <strong>Price:</strong> R<span x-text="pizza.price"></span><br>
-                                <strong>Quantity:</strong> <span
-                                    x-text="'R' + pizza.total.toFixed(2) + ' (x ' + pizza.qty + ')'"></span><br>
-                                <hr>
-                            </li>
-                        </template>
-                    </ul>
-                    <p class="text-white"><strong>Total Paid:</strong> <span
-                            class="fw-bold text-white bg-danger rounded ps-1 pe-1"
-                            x-text="'R' + total.toFixed(2)"></span></p>
-                </div>
-            </div>
+            <template x-for="pizza in orderPizzas">
+                <li class="text-white">
+                    <strong>Pizza:</strong> <span x-text="pizza.flavour"></span><br>
+                    <strong>Size:</strong> <span x-text="pizza.size"></span><br>
+                    <strong>Price:</strong> R<span x-text="pizza.price"></span><br>
+                    <strong>Quantity:</strong> <span
+                        x-text="'R' + pizza.total.toFixed(2) + ' (x ' + pizza.qty + ')'"></span><br>
+                    <hr>
+                </li>
+            </template>
+        </ul>
+        <p class="text-white"><strong>Total Paid:</strong> <span
+                class="fw-bold text-white bg-danger rounded ps-1 pe-1"
+                x-text="'R' + total.toFixed(2)"></span></p>
+    </div>
+</div>
 
             <footer class="text-center pt-4" x-cloak>
                 <div class="container bg-dark card bg-gradient text-white p-3">

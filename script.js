@@ -48,7 +48,6 @@ document.addEventListener("alpine:init", () => {
                     this.paymentAmount = 0;
                     localStorage['cartId'] = '';
                     localStorage['username'] = '';
-                    window.location.reload();
                 }
             },
 
