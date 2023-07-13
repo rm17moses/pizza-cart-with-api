@@ -93,10 +93,10 @@ document.addEventListener("alpine:init", () => {
             getFeaturedPizzas() {
                 axios.get('https://pizza-api.projectcodex.net/api/pizzas/featured?username=rm17moses')
                     .then(result => {
-                       // console.log(result.data);
+                        // console.log(result.data);
                         this.featuredPizzas = result.data.pizzas
                     })
-            },        
+            },
 
             showCartData() {
                 this.getCart().then(result => {
@@ -108,37 +108,37 @@ document.addEventListener("alpine:init", () => {
 
             orderHistory() {
                 axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/${this.cartId}/get`)
-                  .then(result => {
-                    console.log(result.data);
-                    const data = result.data;
-                    this.orderPizzas = data.pizzas;
-                    this.total = data.total;
-                  });
-              },
+                    .then(result => {
+                        console.log(result.data);
+                        const data = result.data;
+                        this.orderPizzas = data.pizzas;
+                        this.total = data.total;
+                    });
+            },
 
-              fetchCartCodes() {
+            fetchCartCodes() {
                 axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/username/${this.username}`)
                     .then(result => {
                         console.log(result.data);
                         this.cartCodes = result.data;
                     })
             },
-              
+
             fetchOrderHistory() {
                 if (this.selectedCartCode) {
-                  axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/${this.selectedCartCode}/get`)
-                    .then(result => {
-                      console.log(result.data);
-                      const data = result.data;
-                      this.orderPizzas = data.pizzas; // Assign the pizzas data to orderPizzas property
-                      this.total = data.total;
-                    });
+                    axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/${this.selectedCartCode}/get`)
+                        .then(result => {
+                            console.log(result.data);
+                            const data = result.data;
+                            this.orderPizzas = data.pizzas; // Assign the pizzas data to orderPizzas property
+                            this.total = data.total;
+                        });
                 } else {
-                  this.orderPizzas = []; // Clear the orderPizzas data when no cart code is selected
-                  this.total = 0;
+                    this.orderPizzas = []; // Clear the orderPizzas data when no cart code is selected
+                    this.total = 0;
                 }
-              },
-            
+            },
+
             init() {
                 const storedUsername = localStorage['username'];
                 if (storedUsername) {
@@ -181,7 +181,7 @@ document.addEventListener("alpine:init", () => {
                         this.amountMessage = ' You need R';
                         this.amountDue = (this.cartTotal - this.paymentAmount).toFixed(2) + ' extra.';
                         setTimeout(() => {
-                            this.message = ' ' ;
+                            this.message = ' ';
                             this.amountMessage = ' ';
                             this.amountDue = ' ';
                         }, 5000);
@@ -195,6 +195,12 @@ document.addEventListener("alpine:init", () => {
                             this.paymentAmount = 0;
                             localStorage['cartId'] = '';
                             this.createCart();
+                            /*
+                            this.featuredPizzas = [];
+                            this.total = 0.00;
+                            this.cartCodes = [];
+                            this.selectedCartCode = "";
+                            this.orderPizzas = [];*/
                             window.location.reload()
                         }, 3000);
                     }
