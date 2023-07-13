@@ -31,17 +31,21 @@ document.addEventListener("alpine:init", () => {
             },
 
             pizzaImage(pizza) {
-              return `images/${pizza.flavour}.png`  
+                return `images/${pizza.flavour}.png`
             },
 
             pizzaImage2(featured) {
-                return `images/${featured.flavour}.png`  
-              },
+                return `images/${featured.flavour}.png`
+            },
 
             logout() {
                 if (confirm('Do you want to logout?')) {
                     this.username = '';
                     this.cartId = '';
+                    this.message = '';
+                    this.cartPizzas = [];
+                    this.cartTotal = 0.00;
+                    this.paymentAmount = 0;
                     localStorage['cartId'] = '';
                     localStorage['username'] = '';
                     window.location.reload();
@@ -118,7 +122,7 @@ document.addEventListener("alpine:init", () => {
             orderHistory() {
                 axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/${this.cartId}/get`)
                     .then(result => {
-                        console.log(result.data);
+                        // console.log(result.data);
                         const data = result.data;
                         this.orderPizzas = data.pizzas;
                         this.total = data.total;
@@ -128,7 +132,7 @@ document.addEventListener("alpine:init", () => {
             fetchCartCodes() {
                 axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/username/${this.username}`)
                     .then(result => {
-                        console.log(result.data);
+                        //  console.log(result.data);
                         this.cartCodes = result.data;
                     })
             },
@@ -137,7 +141,7 @@ document.addEventListener("alpine:init", () => {
                 if (this.selectedCartCode) {
                     axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/${this.selectedCartCode}/get`)
                         .then(result => {
-                            console.log(result.data);
+                            //console.log(result.data);
                             const data = result.data;
                             this.orderPizzas = data.pizzas; // Assign the pizzas data to orderPizzas property
                             this.total = data.total;
@@ -188,7 +192,7 @@ document.addEventListener("alpine:init", () => {
                     if (result.data.status === 'failure') {
                         this.message = result.data.message;
                         this.amountMessage = ' You need R';
-                        this.amountDue = (this.cartTotal - this.paymentAmount).toFixed(2) + ' extra.';
+                        this.amountDue = (this.cartTotal - this.paymentAmount).toFixed(2) + '.';
                         setTimeout(() => {
                             this.message = ' ';
                             this.amountMessage = ' ';
