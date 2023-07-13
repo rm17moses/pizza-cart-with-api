@@ -38,7 +38,7 @@
                     </span>
                 </div>
                 <div x-cloak>
-                    <button class="btn btn-success fw-bold" x-on:click="login" x-show="username">Login</button>
+                    <button class="btn btn-success fw-bold" x-on:click="login" x-show="username"><i class="bi bi-person-fill"></i> Login</button>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
 
         <div style="--bs-bg-opacity: .7;"
             class="container border text-center bg-warning bg-gradient text-center card p-3 mb-3">
-            <h1 x-text="title"></h1>
+            <i class="bi bi-shop"></i> <h1 x-text="title"> </h1>
             <div class="d-block">
                 <p class="mb-2 text-center">
                     <span class="d-inline text-center">Hello,</span>
@@ -65,7 +65,7 @@
                 <button class="dropdown btn btn-sm btn-warning fw-bold">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Your cart code
+                        <i class="bi bi-folder2-open"></i> Your cart code
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -80,11 +80,11 @@
 
             <nav class="navbar card bg-transparent border border-0" x-cloak>
                 <div class="justify-content-evenly">
-                    <a href="#fpizzas"><button class="btn btn-sm btn-primary fw-bold">Featured Pizzas</button></a>
+                    <a href="#fpizzas"><button class="btn btn-sm bg-primary-subtle fw-bold">Featured Pizzas</button></a>
                     <a href="#menu"><button class="btn btn-sm bg-primary-subtle fw-bold">Pizza Menu</button></a>
                     <a href="#previous"><button class="btn btn-sm bg-primary-subtle fw-bold">Order History</button></a>
                     <button class="btn btn-danger btn-sm fw-bold" x-on:click="logout"
-                        x-show="username && cartId">Logout</button>
+                        x-show="username && cartId"><i class="bi bi-box-arrow-right"></i> Logout</button>
                 </div>
             </nav>
         </div>
@@ -96,10 +96,10 @@
                     <div class="bg-info-subtle rounded p-2 mb-4">
                         <ul class="list-unstyled p-1 pt-3">
                                 <template x-for="pizza in cartPizzas">
-                                    <li class="fw-bold">
+                                    <li >
                                         <div class="row p-1 ">
                                             <div class="col-6 text-wrap mb-3">
-                                                <div >
+                                                <div class="fw-bold" >
                                                     <i class="bi bi-check2-square"></i> <span x-text="pizza.flavour"></span>
                                                     <span x-text="'(' + pizza.size + ')'"></span>
                                                 </div>
@@ -127,7 +127,7 @@
                     </div>
                     <div x-data="{ open: false, background: 'bg-warning' }">
                         <div x-show="!open">
-                            <button class="btn-sm position-relative bottom-0 start-50 translate-middle btn btn-warning fw-bold"
+                            <button class=" position-relative bottom-0 start-50 translate-middle btn btn-warning fw-bold"
                                 :class="background"
                                 x-on:click="open = ! open; background = 'bg-dark bg-gradient text-white'"><i
                                     class="bi bi-cart-check-fill icons icon-link-hover"></i>
@@ -138,14 +138,16 @@
                             <p class="fw-bold text-center bg-primary-subtle rounded "
                                 x-text=" message + amountMessage + amountDue"></p>
 
-                            <div class="input-group mb-3">
-                                <span class="input-group-text fw-bold">R</span>
-                                <input step="20" min="0" x-model.number="paymentAmount" type="number"
-                                    class="form-control p-1 " placeholder="Enter Payment Amount"
-                                    aria-label="Customer paymentAmount" aria-describedby="button-addon2">
-                                <button class="btn btn-warning btn-sm p-1 fw-bold" type="button" id="button-addon2"
-                                    x-on:click="payForCart()"><i class="bi bi-currency-exchange"></i>Pay</button>
-                            </div>
+                                <div class="d-flex justify-content-center mb-3">
+                                                <span class="fw-bold bg-light pe-3 ps-3 pt-2 pb-2">R</span>
+                                                <input step="20" min="0" x-model.number="paymentAmount" type="number"
+                                                    class=" p-1 " placeholder="Enter Payment Amount">
+                                                <button class="btn btn-warning btn-sm ps-2 pe-2 fw-bold" type="button"
+                                                x-on:click="payForCart()"><i class="bi bi-currency-exchange"></i>Pay</button>            
+                                        </div>
+                            
+                               
+                               </div>
                         </div>
                     </div>
                 </div>
@@ -155,10 +157,10 @@
 
     <div class="featuredPizzas" x-show="username && cartId" x-cloak>
         <div style="--bs-bg-opacity: .75;" id="fpizzas" class="card p-4 mb-3 mt-3 bg-dark bg-gradient text-emphasis-warning" >
-        <h2 class="text-center text-white" >Featured Pizzas</h2>
+        <h2 class="text-center text-white"> <i class="bi bi-menu-button"></i> Featured Pizzas</h2>
         <div class="row">
         <template x-for="featured in featuredPizzas">
-            <div class="col-md-4 mb-3 ">
+            <div class="col-md-4 mb-3 mt-3">
                 <div class="card h-100 d-flex flex-column bg-info-subtle bg-gradient text-emphasis-secondary">    
                     <img src="images/Chicken and Mushroom.png" class="card-img-top" alt="Pizza Image">
                     <div class="card-body d-flex flex-column justify-content-between">
@@ -167,7 +169,7 @@
             </div>
                 <p style="width: 100%;" class="card-text">Size: <span x-text="featured.size"></span></p>
                 <p style="width: 120px;" class="card-text">Price: <span class="text-white fw-bold bg-danger rounded ps-1 pe-1" x-text="'R' + featured.price"></span></p>
-                <button class="btn btn-primary mt-2 fw-bold" x-on:click="addPizzaToCart(featured.id)">Buy</button>
+                <button class="btn btn-primary mt-2 fw-bold" x-on:click="addPizzaToCart(featured.id)"><i class="bi bi-cart-plus"></i> Buy</button>
             </div>
         </template>
     </div>
@@ -176,23 +178,23 @@
 
         <div class="pizzas" x-show="username && cartId" x-cloak>
             <div class="card p-4 mt-3 bg-dark bg-gradient text-emphasis-warning" id="menu" style="--bs-bg-opacity: .75;">
-              <h2 class="text-center text-white">Pizza Menu</h2>
+              <h2 class="text-center text-white"> <i class="bi bi-menu-button"></i> Pizza Menu</h2>
                 <template x-for="pizza in pizzas">
-                    <div class="card mb-3 h-100 d-flex flex-column bg-warning bg-gradient text-emphasis-secondary">
+                    <div class="card mt-3 mb-3 h-100 d-flex flex-column bg-success-subtle bg-gradient text-emphasis-secondary">
                         <div class="card-body d-flex flex-column justify-content-between ">
                         <div class="d-flex justify-content-between">
                           <p>Pizza: <span x-text="pizza.flavour"></span></p>
                         </div>
                         <p style="width: 100%;" class="card-text">Size: <span x-text="pizza.size"></span></p>
                         <p style="width: 120px;" class="card-text fw-bold">Price: <span class="fw-bold text-white bg-danger rounded ps-1 pe-1"  x-text="'R' + pizza.price"></span></p>
-                        <button class="btn btn-success mt-2 fw-bold" x-on:click="addPizzaToCart(pizza.id)">Buy</button>
+                        <button class="btn btn-success mt-2 fw-bold" x-on:click="addPizzaToCart(pizza.id)"><i class="bi bi-cart-plus"></i> Buy</button>
                       </div>
                     </div>
                 </template>
             </div>
           
             <div x-cloak class="card p-4 mt-3 bg-dark bg-gradient text-emphasis-warning" id="previous" style="--bs-bg-opacity: .75;">
-                <h2 class="text-center text-white">Your Previous Orders</h2>
+                <h2 class="text-center text-white"><i class="bi bi-clock-history"></i> Your Previous Orders</h2>
     <div class="mb-3">
         <select class="form-select form-select-sm" id="cartCodeSelect" x-model="selectedCartCode" x-on:change="fetchOrderHistory" aria-label=".form-select-sm example">
             <option selected>-- Select Cart Code --</option>

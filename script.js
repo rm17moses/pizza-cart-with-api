@@ -195,6 +195,7 @@ document.addEventListener("alpine:init", () => {
                             this.paymentAmount = 0;
                             localStorage['cartId'] = '';
                             this.createCart();
+                            window.location.reload()
                         }, 3000);
                     }
                 });
