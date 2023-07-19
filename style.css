@@ -17,6 +17,11 @@
     z-index: 9999;
 }
 
+.btn-close {
+    background-color: red;
+    color: white;
+}
+
 .fixed-top {
     position: fixed;
     top: 0;
@@ -24,5 +29,6 @@
 }
 
 #paymentMessage {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family:Helvetica;
+    color: gold;
 }

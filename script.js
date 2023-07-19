@@ -206,15 +206,8 @@ document.addEventListener("alpine:init", () => {
                             this.cartId = '';
                             this.paymentAmount = 0;
                             localStorage['cartId'] = '';
-                            this.createCart();
-                            /*
-                            this.featuredPizzas = [];
-                            this.total = 0.00;
-                            this.cartCodes = [];
-                            this.selectedCartCode = "";
-                            this.orderPizzas = [];*/
-                            window.location.reload(true)
-                           // window.location.reload()
+                            //this.createCart();
+                           window.location.reload();
                         }, 3000);
                     }
                 });

@@ -109,6 +109,7 @@
                     <div x-show="isOpen" class="mt-3">
                         
                         <div class="container-sm card bg-dark bg-gradient" >
+                            <button type="button" class="btn-close mt-2 p-2" x-on:click="isOpen = !isOpen" aria-label="Close"></button>
                             <h3 class="text-center p-2 mb-2 text-white"><i class="bi bi-cart"></i> Shopping cart</h3>
                             <div class="bg-info-subtle rounded mb-4">
                                 <table class="table mt-3 me-3 table-responsive">
@@ -159,8 +160,8 @@
                                 </div>
             
                                 <div x-show="open">
-                                    <h6 class="fw-bold text-center bg-warning rounded" id="paymentMessage"
-                                        x-text="message + amountMessage + amountDue"></h6>
+                                    <h5 class="fw-bold text-center" id="paymentMessage"
+                                        x-text="message + amountMessage + amountDue"></h5>
                                     <div class="d-flex justify-content-center mb-3">
                                         <span class="fw-bold bg-light pe-3 ps-3 pt-2 pb-2 rounded">R</span>
                                         <input step="20" min="0" x-model.number="paymentAmount" type="number" class="p-1"
