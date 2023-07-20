@@ -14,8 +14,8 @@ POST https://pizza-api.projectcodex.net/api/pizza-cart/add
 content-type: application/json
 
 {
-	"cart_code" : "Nv9NIrtYs5",
-	"pizza_id" : 9
+	"cart_code" : "6VWEyIMSNN",
+	"pizza_id" : 25
 
 }
 
@@ -64,7 +64,7 @@ Content-Type: application/json
 
 {
   "username": "rm17moses",
-  "pizza_id": 23
+  "pizza_id": 7
 }
 
 ### Get listed featured pizzas
